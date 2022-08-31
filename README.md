@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+![2022-09-01_040634](https://user-images.githubusercontent.com/80756638/187762101-89775202-a15f-4809-ac0b-2892d9a6a0ef.jpg)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+* 위에 있는 항목인 title, amount, date를 입력하여 아래 창에 표현할 수 있는 기능 연습
+* 연도별로 filter를 사용 하여 그 연도에 맞게 출력할수 있게 했음
 
-## Available Scripts
+<h1> Button && form </h1>
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+<button type="submit">Button</button>
+은 왠만하면  <form> tag와 쓰는 것이 좋다. 
+그리고 
+<button type="submit" onClick={}>Button</button>
+button tag 안에 onClick을 쓰지 않도록 해야 한다. 왜냐하면 button 안에
+onClick 기능이 있기 때문이다. 
+그래서
+<form onSubmit={submitHandler}>
+	<button type="submit">Button</button>
+<form>
+스타일로 만들어 주는 것이 좋고
+  const submitHandler = (event) =>{
+        event.preventDefault();
+    };
+button을 클릭했을때 
+<form onSubmit={submitHandler}>
+가 submitHandler 함수로 form 전체가 날아간다.
+근데 이럴때 버튼을 누를때 마다 랜더링이 계속 되기 때문에 이것을 방지해주는
+ event.preventDefault();
+ 이것을 꼭 써주어야 한다. 
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<h1>useState로 객체정보 update 시키는 방법</h1>
 
-### `npm test`
+```
+<NewExpense onAddExpense={addExpenseHandler} /> 
+에서 addExpenseHandler 함수를 호출할때 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ const addExpenseHandler = (expense) => {
+        // console.log('In App.js');
+        // console.log(expense);
+        // setExpenses([expense, ...expenses]);
+        setExpenses((prevExpenses)=>{
+          return [expense,...prevExpenses];
+        })
+ data를 update 시키기 위해 useState를 이용할때 
+setExpenses([expense, ...expenses]);
+이런 식보다는 
+setExpenses((prevExpenses)=>{
+          return [expense,...prevExpenses];
+        })
+이런식으로 prev를 이용한 스프래드 연산자를 이용하여 update 하는 것이 
+안전하다. 
+```
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
