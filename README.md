@@ -1,4 +1,5 @@
-![2022-09-01_040634](https://user-images.githubusercontent.com/80756638/187762101-89775202-a15f-4809-ac0b-2892d9a6a0ef.jpg)
+![project1](https://user-images.githubusercontent.com/80756638/188105457-0fca1f92-90ca-4e25-89f6-129e23ef654e.gif)
+
 
 * 위에 있는 항목인 title, amount, date를 입력하여 아래 창에 표현할 수 있는 기능 연습
 * 연도별로 filter를 사용 하여 그 연도에 맞게 출력할수 있게 했음
